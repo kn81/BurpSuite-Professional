@@ -1,0 +1,933 @@
+
+
+1.	Burp Suite for Pentester: Web Scanner & Crawler
+2.	Burp Suite for Pentester – Fuzzing with Intruder (Part3)
+3.	Burp Suite for Pentester – Fuzzing with Intruder (Part2)
+4.	Burp Suite for Pentester – Fuzzing with Intruder (Part1)
+5.	Burp Suite for Pentester – XSS Validator
+6.	Burp Suite for Pentester – Configuring Proxy
+7.	Burp Suite for Pentester: Burp Collaborator
+8.	Burp Suite For Pentester: HackBar
+9.	Burp Suite for Pentester: Burp Sequencer
+10.	Burp Suite for Pentester: Turbo Intruder
+11.	Engagement Tools Tutorial in Burp suite
+12.	Payload Processing Rule in Burp suite (Part2)
+13.	Payload Processing Rule in Burp suite (Part1)
+14.	Beginners Guide to Burpsuite Payloads (Part2)
+15.	Beginners Guide to Burpsuite Payloads (Part1)
+16.	Burpsuite Encoder & Decoder Tutorial
+17.	Burp Suite for Pentester: Active Scan++
+18.	Burp Suite for Pentester: Software Vulnerability Scanner
+19.	Burp Suite for Pentester: Burp’s Project Management
+
+
+1.	Burp Suite for Pentester: Web Scanner & Crawler
+===========================================================
+	What is Crawler?
+	crawler surveys a specific region slowly and deeply and then drops down the output with a defined format
+
+	dashboard Tab
+	--------------
+	1.	Tasks 
+	2.	Event log 
+	3.	Issue Activity 
+	4.	Advisory 
+
+	5.New Scan
+	----------
+	  •	Crawl & Audit
+	  •	Crawl
+
+		A) Scan details->
+		 --------------- 
+				  a) URL to scan  
+		   		  b)Protocol Setting
+			 	   ------------------		
+			  		i) Scan using HTTP & HTTPS 
+					ii) Scan using my specified protocol
+				
+			  	  c)Customizing the Crawler
+			  	   ------------------------
+			  	  i) Configuring Out of Scope URL’s
+					a)Included URL prefixes
+					b)Excluded URL prefixes
+
+			  	  ii)website needs some specific credentials 
+
+		B) Scan configuration 
+		----------------- 
+				  a)New, b)Up,c)Down,d)Edit, e)Delete,f)import
+				  New
+				  ----
+				    a)Configuration Name
+				    b)Crawl optimization 
+				    --------------------
+					i)Fastest to the Deepest
+					ii)maximum crawl limit 
+					iii)Maximum unique locations discovered 
+				  
+		C) Application Login
+		---------------------
+				 New, Edit, Delete
+				 
+				 New
+				 ----
+				  (New Login credentials window)
+				  -----------------------------
+				  a)Label
+				  b)User Name
+				  c)Password
+
+		D) Resource Pool 
+		   A resource pool is basically a section defined for the concurrent requests 
+				a) Use Existing Resource Pool 
+				b) Create new Resource Pool 
+					i)Name
+					ii)concurrent requests 
+					iii)Delay between requests
+						a)Add random variation
+
+	6. New Live Task
+
+
+	Vulnerability Scanning Over Burpsuite
+	-------------------------------------
+	BurpSuite scans the applications with a name as “Audit”
+
+		Auditing with the default configuration
+		---------------------------------------
+		by incepting the request, (or through the target tab).right-click and opting the “Scan”.-> redirected back to the New Scan’s Dashboard->“Audit Selected items”,  
+		soon as we select it we’ll thus get all the URL’s within the Item to Scan box 
+
+	
+		View Details section
+		--------------------
+		placed at the bottom of the defined task,click-> will thus get redirected to a new window will all the refined details within it
+
+		(Audit od abc.com window)
+		-------------------------
+		A)Details
+			Task Details
+			--------------
+			Scan type
+			Scope
+			Configuration
+			Issues
+			Requests
+			Errors
+			Auditing Estimating time remaining
+
+		B)Audit Items
+			URL
+			Status
+			Passive Phase
+			Active Phase
+			Java script Phase
+			Issues
+			Requests
+			Errors
+			Insertion points
+
+		C)Issue Activity
+			Filters-> High, Medium, Low, Info,Certain, Firm, Tentative
+			
+			#
+			Task
+			Time
+			Action
+			Issue Type
+			Host
+			Path
+
+		D)Event log
+
+
+		Defining Audit Configurations
+		-----------------------------
+		configure this Audit too, by getting back to the “New Scan” dashboard with a right-click on the defined URL & hitting Scan
+		a)crwal
+		b)crawl & Audit
+		c)Audit selected Items
+		  -----------------------
+		  i) Add to a task
+		  ii) Create new task
+
+		 Scan configuration window appears with same options a)New, b)Up,c)Down,d)Edit, e)Delete,f)import
+
+		 a)Configuration Name
+		 b)Audit optimization 
+		 --------------------	
+			Scan Type (Audit Speed, Accuracy)
+			---------------------------------
+ 			Issues Reported
+			---------------
+			   select by scan type
+				•	Passive – These issues are detected simply by inspecting the application’s behavior of requests and responses.
+				•	Light active – Here this detects issues by making a small number of benign additional requests.
+				•	Medium active – These are issues that can be detected by making requests that the application might reasonably view as malicious.
+				•	Intrusive active – These issues are detected by making requests that carry a higher risk of damaging the application or its data. For example, SQL injection.
+				•	JavaScript analysis – These are issues that can be detected by analyzing the JavaScript that the application executes on the client-side.
+
+			Insertion point Types
+			---------------------
+			url parameter values
+			body parameter values
+			cookie parameter values
+			parameter name
+			HTTP header
+			Entire body (for relevant content types)
+			Url path file name
+			Url path Director name   
+			
+			select above configuration and we hit the “Save” then scan
+
+			if we move back to the Target tab and select any request from the left panel and do a right-click over there, we’ll get 2 options rather than “1”, 
+
+			Thereby, we’ll opt the Open scan launcher
+			As we head back, we’re welcomed with our previous customized audit, but at the bottom, there is a “Select from library” option,
+			
+			burpsuite offer one more great feature to opt a built-in Audit check, where we simply need to select any and continue.
+			
+
+			Crawling & Scanning with an Advanced Scenario
+			----------------------------------------------
+			1.	First Crawl the application and discover the contents and the functionalities within it.
+			2.	Further, it will start auditing it for the vulnerabilities.
+			
+			Back on the dashboard, select “New Scan”, and now this time opt “Crawl & Audit”, further mention the URL within it.
+
+			Deleting the Defined Tasks
+			--------------------------
+			Rather not only knowing how to start or configure the things up, but we should also be aware of how to end them all
+
+
+
+	Target Tab
+	-----------
+	1) Sitemap-> 
+			A) Tree structure/Directory view
+			B) Contents-> a)Host b)Method c)URL, d)Parameter e)status f)Length
+	2) Scope
+	3) Issue Definition
+======================================================================================================================================================
+	
+2.	Burp Suite for Pentester – Fuzzing with Intruder (Part3)
+===================================================================
+	Fuzzing with the Attack Type
+	------------------------------
+		* Sniper-> * sniper uses a single set of payloads and targets a single position in turn with it. 
+			   * But, with this, we can’t set multiple payload positions over in the same Request.
+		• Cluster Bomb--> * here we’ll try to fuzz the username and password of the users by injecting two different payload lists respectively at the different injection points
+				  * the total number of requests generated in this attack is the product of the number of payloads in all defined payload sets.
+		• Battering ram--> * it requires a single set of payload lists to hit the vulnerability at multiple positions within the request.
+		• Pitchfork --> * it carries multiple payload sets and different injection points.
+				* . it simply checks the first payload from payload list one with the first payload from the payload list 2, and if they found to be the correct credential, it passes a success.
+
+	Fuzzing with the Payload Types
+	------------------------------
+		• Brute forcer-> which takes the input string and generates payloads of specified lengths that contain all permutations of a specified input character set.
+				  Character Set – The set of characters that are to be used in payloads.
+				  Min Length – The length of the shortest payload
+				  Max Length – The length of the longest payload
+
+		• Character Frobber-> there are times when we get encountered with such situations where a string is responsible for the application’s response
+				      Such situations normally occur when we do an account takeover, where we try to manipulate the user ID with one of a genuine user
+				      which modifies the value of each character position on the existing base string by incrementing the ASCII code of a specific character by one
+
+				“Grep Extract” option
+				---------------------
+				which will thereby help us in order to identify which payload sting is defined to which application ID.
+				Intruder Tab-> Options tab, scroll down to the Grep – Extract field, check the “Extract the following items from responses” and click on the “Add” button
+						You’ll be redirected to a new window, click the fetch response button and the search for “Application ID” there, further select the output and hit OK, as in our case 
+
+		• Case Modification -> Sometimes it’s difficult to determine, that in which case the user has set his/her password. 
+					However, this is not for the passwords only, there are times when the developer blocks some specific cases for their input field, thereby in order to determine such, we can use this too
+
+					Payload options
+					---------------
+					No change
+					To Lower case
+					To Upper case
+					To ProperName
+					To Propername
+
+		• Numbers--> this payload type is specifically designed for the numbers part
+					helping hand majorly in the OTP Bypass attacks.
+					From – The fuzzing will start from that payload.
+					To – The last Payload
+					Steps – This indicates the iteration, 
+
+		• Username Generator-> such situations,most difficult thing is to identify the username he set.
+
+====================================================================================================================================================
+3.	Burp Suite for Pentester – Fuzzing with Intruder (Part2)
+=================================================================
+	Fuzz with Burp’s built-in Payload lists
+	--------------------------------------
+
+	1) Fuzzing for Cross-Site Scripting -: where malicious scripts are injected into trusted websites where the input-parameters are not properly sanitized or validated. 
+						Intruder Tab->the payload list, click on Add from list.. button and scroll until you get the “Fuzzing – XSS” option
+
+	2) Fuzzing for OS Command Injection:   the attacker tries to executes arbitrary commands directly through a vulnerable application, there in order to retrieve information of the webserver or try to make unauthorized access into the server
+						no such pre-defined list for this OS Command Injection but still, we can exploit it with the all-in-one fuzzing list i.e.  with “Fuzzing – quick”
+
+	3) Fuzzing for Hidden Directories: 	, it’s about to impossible to find these directories with the naked eyes. Therefore, to make our work easy and to make this task possible,
+						select the "Dictionary – short" payload list from the Add from list… option.
+
+	4) Fuzzing for HTTP Verb Tampering:	HTTP Verbs are majorly used by web-developers, during development phase they use the most common verb methods i.e. GET & POST. But rather than these two, there are a number of HTTP methods exists up, that if injected at a wrong place could thus lead to some drastic results.
+						choose the payload list as “HTTP verbs”, and hit the Attack button
+
+	5) Fuzzing for SQL Injection		separate payload list specially designed to encounter an SQL vulnerability.
+						Select the Fuzzing – SQL Injection for payload 	
+
+	Fuzzing with Customized Lists.
+	-------------------------------
+	Manipulating Burp Suite’s pre-defined payloads-> if I want to fuzz with my own payloads but along with that I also want the pre-defined lists
+	
+	Injecting our Customised Payload Lists-> . it allows us to load any payload list for our fuzzing attack.Click on the Load button and select the payload list that you want to fuzz with
+	--------------------------------------
+========================================================================================================================================================
+4.	Burp Suite for Pentester – Fuzzing with Intruder (Part1)
+=================================================================
+	What is Fuzzing?
+	It is a technique which is used for find bugs, errors, faults, and loophole by injecting a set of partially – arbitrary inputs called fuzz
+
+	How Burp Suite work as a Fuzzer?
+	•	First, we need to intercept the HTTP Request, therewith that we’ll thus share it with the Intruder.
+	•	As soon as we do so, we’ll define the parameters or the injection points where the fuzzing needs to be done.
+	•	Now, at last, the attack type and payloads list need to be defined up with that.
+	And as soon as we launch the fuzzing attack by hitting the “Attack” button, we’ll get the output screen stating up all the possible hits and drop. Therewith it, we can thus analyse them and find a crucial hit.
+	
+	Fuzz with the Burp’s built-in Payload Lists
+	=========================================
+	Fuzzing for Login Credentials :
+	-------------------------------
+	1. The Password field Fuzzing using Password list & Short words list
+	2. The Username field fuzzing using Username list
+
+	Fuzzing for SQL Injection
+	--------------------------
+	Burp Suite offers a separate Payload list for SQL Injection fuzzing, but the common fuzzing lists the quick and the full also contributes some payloads for SQL Injection, OS Command Injection, Cross-Site Scripting and many more
+
+	Fuzzing to find Hidden Files
+	choose it to “Filename – short ,  Filenames – long 
+
+	Fuzz to find Restricted File Upload Extensions
+	----------------------------------------------
+	Choose the Extensions – short 
+	to determine which extensions are blocked and which are not,at the Options tab, scroll down to the Grep – Match field, there remove all the predefined keywords and add “blocked” over there.
+
+	Introduction to Extensions & the BApp Store
+	
+	Burp Extensions-> Extensions are small programs scripted in order to enhance the functionalities over in an application
+	BApp Store-> we can view the list of available BApps, install a specific one, 
+		     and even we can submit a user rating for those we’ve already installed
+		we’re having one tab that is build only to manage the burp’s extensions and i.e. the Extender. The Extender tab helps us to manage everything related to an extension
+		A) Burp Extensions
+		B) BApp Store
+		C) API's
+		D) Options
+
+	burp Suite for Pentester – XSS Validator
+	-----------------------------------------
+	Setting up the XSS Validator
+	navigate to the Extender tab, opt the BApp sub-tab -> xssValidator”.
+
+	Installing Phantom.js as an XSS Detector
+	 in order to integrate our XSS validator with this Phantom.js, we need to download the xss.js file 
+
+	Let’s check whether our server is running or not by executing-> http://127.0.0.1:8093
+
+	capture the ongoing HTTP Request and thus will share it to the Intruder directly,Time to set the payload position and the attack type,need to first set the payload type to Extension-generated
+	And with this, we now need to select our generator as XSS Validator Payloads from the Payload option.
+
+	Grep payloads
+	----------------
+	A) Search responses for payload strings
+	B) Case sensitive match
+	C) Exclude HTTP headers
+	D) Match against pre url encoded payloads
+
+	Right-click on any successful request, opt the option to “Show response in the browser” and copy the generated URL in thus paste it in the browser.
+
+	Customizing the Payload lists:-> A number of payloads come pre-installed with the XSS validator, but what if, if we want to add our customized payload??  Yes, we can do so by simply typing or by pasting the payload(s) directly in the Payload option provided at the right-hand side of the extension.
+	
+====================================================================================================================================================
+6.	Burp Suite for Pentester – Configuring Proxy
+=======================================================
+	•	Configuring Burp Proxy for Web Applications
+	Configuring Burp Proxy for Web Applications
+	----------------------------------------------
+	opt the proxy tab and thus then move to the Options sub-tab.
+	Over there, you’ll find the default configuration as – the IP Address bound to 127.0.0.1 and the port with 8080
+
+	Manual Configuration
+	--------------------
+1.	Boot inside your Firefox browser and go to Options.
+2.	There, in the General tab, scroll down to the Network Settings and hit the Settings button.
+3.	Over in the Connection Settings, opt the Manual proxy configuration and type in the IP address as 127.0.0.1 with the port as 8080.
+4.	Select “Also use this proxy for FTP and HTTPS” checkbox
+
+	, in order to capture HTTPS traffic, we need to establish trust between Burp, the target’s web application and the client’s browser. And for this, we need to install the PortSwigger’s certificate as a trusted authority within the browser.
+	1.	Back into the burpsuite, over in the proxy tab, hit the intercept section and check whether the Intercept button is labelled On or Off, if disabled, enable it to capture the further requests.
+	2.	Open the Firefox browser and redirect it to http://burp There, hit the CA Certificate in order to download the PortSwigger’s Certificate.
+`	3.	Back into the options section in firefox, click Privacy & Security on the left-hand side, and scroll down to Certificates Click the View Certificates… button in order to add up the downloaded certificate.
+	4.	Move to the Authorities tab, click Import and thus select the downloaded Burp CA certificate file.
+	5.	As soon as the certificate loads up, a dialogue box will get prompted up, there, check the Trust this CA to identify websites box, and fire up the OK button
+
+	Configuring Using Foxy Proxy
+	----------------------------
+	Foxy Proxy, this will give us the option to enable and disable the proxy service whenever we wish too,
+	add this plugin
+	As soon as you hit the Add to Firefox button, a dialog box will get popped up asking you for the confirmation, again click on the Add button
+	set the IP address to 127.0.0.1 and the port to 8080, and with the successful configuration, hit the save button.
+
+	Configuring Burp Proxy for Android Applications
+	------------------------------------------------
+	Genymotion installed up an android device within it
+	back into Burp Suite, switch to the Proxy tab and hit the Options sub-tab there. Click on the Add button in order to set up a new interface
+	port number as -->8081 
+	bind to address -->All interfaces
+	configure the Android device-> On android device,  navigate to the Network and Internet option in the Settings
+	click the connected wifi and hold it until it offers further options for us
+	Click on Modify network and over in the Advanced Options, opt the Manual proxy configuration
+	As soon as we hit the Manual option, we’ll get redirected to the proxy configuration section where we need to provide the Proxy hostname and the Proxy port.
+	IP address of your window’s machine -> in our case, it is 192.168.1.9; 
+	bind the burp’s proxy i.e. 8081
+	Hit the Save button 
+	
+	to intercept the HTTPS requests we need to install the certificates into this android device too.
+	surf http://burp in order to download the certificate.
+	rename the certificate file from “cacert.der” to “cacert.cer”.
+	back into the device settings, navigate to Security & Location -> Encryption & Credentials, over there hit the Install from SD card option to install the CA certificate
+
+==============================================================================================================================================
+7.	Burp Suite for Pentester: Burp Collaborator
+====================================================
+	Introduction to Burp Collaborator
+	or detect vulnerabilities that try to interact with external services 
+	this collaborator is basically a network service used by Burp Suite to determine the out-of-band vulnerabilities by injecting payloads to the application and then waits for the response to analyze their unusual behaviours
+	
+	Burp Collaborator Server 
+	-------------------------
+	The burp collaborator server is a service used by Burpsuite while auditing or testing vulnerable web-applications in order to find sections that interact with an external system.
+	By default, Burp uses the public Collaborator Server provided by PortSwigger
+	but it even offers the feature to host or deploy a private collaborator server too.
+	to modify the server configuration, simply head to the Project option and then switch to the Misc tab
+	do a health check by hitting the Run heath check button in order to be sure that our collaborator is working properly
+	
+	Burp Collaborator Client 
+	-------------------------
+	Burp Collaborator Client is a tool to make use of the Collaborator server during manual testing
+	This collaborator client helps us to generate payloads such that we can use them over at the injection points in the vulnerable applications ,with the Burp’s Intruder or Repeater.
+	The Burp Collaborator Client resides within the Burp tab at the top left section 
+
+	Collaborator client. Dropping a number of options within it, there are two important ones – Copy to clipboard; & Poll.
+	Poll Now option will help us to poll the server whenever we want to, rather not wait for the default time i.e. “60”.
+	
+	Detecting vulnerabilities with Collaborator Client
+	----------------------------------------------------
+	Remote Command Injection or OS Injection is the vulnerability where the attacker tries to perform system-level commands directly through a vulnerable application in order to retrieve information of the webserver.
+	Cross-Site Scripting Detection ->Cross-Site Scripting is a client-side code injection attack where malicious scripts are injected into trusted websites and are triggered when the user visits the specific suffering web-page
+	Blind XXE >almost every application carries up XML inputs and parse them. However, the majority of these are blind ones as the weakly configured XML parser parses the malicious content but do not render it directly on the visitor’s screen.
+	Server-Side Request Forgery-> where the attacker is able to use the vulnerable application to send crafted HTTP Request to a third-party server or application in order to fetch internal information, banners or open ports. 
+
+	Fuzzing for SSRF Detection
+	--------------------------
+	move to the Mutillidae application and then we’ll navigate to OWASP 2017 | A1 – Injection
+(Other) | Application Log Injection | DNS Lookup.
+
+	we got an input field to enter the IP Address, let’s enter the localhost IP.
+	let’s configure our burp monitor in order to intercept the passing HTTP request and as soon as it captures it up, we’ll share it to the Intruder tab.
+	Over in the intruder tab, we’ll modify the injection point and set the payload position at the IP address we’ve entered
+	Back into the collaborator client window, set the number to generate to 10 and hit the copy to clipboard button
+	Over into the payload section, simply hit the Paste button in order to move all the copied payloads in the empty box, further hit the “Attack” button to initiate the fuzzer
+
+	amount of DNS service is triggered out by the application confirming the presence of SSRF vulnerability
+
+=======================================================================================================================================================
+8.	Burp Suite For Pentester: HackBar
+=============================================
+	What is Hack Bar?
+	Hackbar is a plugin designed for the penetration tester such in order to help them to speed their manual testing procedures. 
+	The Burp’s Hack Bar is a Java-based Burpsuite Plugin which helps the pen-testers to insert any payload by opting from a variety of different dropdown lists.
+
+	Hack Bar Installation
+	----------------------
+	we need to download its jar file from the GitHub repository
+	burpsuite->  Extensions section in the Extender tab-> Add button -> “Load Burp Extension” window.
+	Let’s now set the extension type to “Java” and opt the downloaded file. Further, we’ll hit “Next” to initiate the installation.
+	
+	Follow up at the repeater tab and make a right-click anywhere at the screen. Over with that, we can see a new option lined up as “Hackbar”.
+
+	Exploiting vulnerabilities with Hackbar
+	--------------------------------------
+	SQL Injection
+	SQLi Login Bypass
+	Cross-Site Scripting
+	Local File Inclusion
+	XXE Injection
+	Unrestricted File Upload-> Over in the Burpsuite’s Repeater tab, open a new section and do a right-click at the empty portion of the Request bar and then follow to Hack Bar -> Web Shells -> php
+				   The empty section is thus filled with some code.
+				   Let’s copy that all and paste it into notepad, further saving it as hackbar_webshell.php
+				   back into the bWAPP application and opt Unrestricted File Upload.
+				   Further clicking on the “Browse..” button, select hackbar_webshell.php file.
+				   As soon as the file got uploaded we got the redirection link, let’s check that out.
+
+	OS Command Injection
+			check you bWAPP and navigate to OS Command Injection and hit the “hack” button and capture the request there.
+			share the captured request to the Repeater
+			right-click after “www.nsa.gov”
+			choose Hack Bar -> Reverse shell -> One Liner -> nc. But, remember to set the meta-character between the two commands.
+			we got the option to enter the RHost value, let enter our Kali Linux IP
+			our reverse shell needs a port, let’s set it to 4444 
+			Before hitting the “Send” button let’s initiate our netcat listener at our Kali machine with nc -lvp 4444
+			Send button got pressed up, our listener fluctuates and we got the connection established
+
+=============================================================================================================================================
+9.	Burp Suite for Pentester: Burp Sequencer
+===================================================
+	Introduction to Burp Sequencer
+	Burp Sequencer is a tool for analyzing the quality of randomness in a sample of data items
+	The data items can either be application’s session ID’s, CSRF tokens, password reset or forget password tokens or any specific unpredictable ID generated by the application
+
+	the tool tests the given sample in a number of different scenarios whether it is a character-level analysis or a Bit-level one
+
+	navigate to the Sequencer tab over at the top panel.
+	
+	Session ID exploitation via Sequencer
+	------------------------------------
+	initiate the analyzer within the burp sequencer by capturing and sharing a login Session ID over from our bWAPP
+	From the captured request we can see that a PHPSESSID is in the Cookie header, let’s share the complete request with the Sequencer
+	As soon as the Sequencer receives the request, the empty fields got filled up directly with the Token ID that goes with the “Response
+	
+	the burp suite’s creators give us the opportunity to define the Custom location within the response. 
+	Hit the Custom location radio button -> new window opened as “Define Custom token location” 
+	opt either the defined options whether “Define start & end” or “Extract from regex group”
+	we got some manipulation at the Start and the End delimiters. Thus, hit the Save button 
+	hit the “Start Live Capture” button having the Cookie option selected at the “Token Location within Response” section
+
+	once the Capture page boots up, a progress bar is displayed with a counter of tokens generated and the requests made by the sequencer
+
+	1.	Pause/Resume: This temporarily pauses the capturing request and the counter, such in order to help the pentester to analyze the requests generated till then.
+	2.	Copy Tokens: It helps to copy all the randomized tokens generated.
+	3.	Stop: A major road block for the live capture analyzer.
+	4.	Save Tokens: Output can be dropped down as in the form of randomized generated tokens into a defined file.
+	5.	Auto analyze: This check box (if enabled) will thus help the Sequencer to dump the analyzed results as soon as a specific number of tokens are generated.
+	6.	Analyze now: This button is only available when at least 100 tokens have been generated and if clicked, will thus print out the analyzed report on the screen.
+
+	Manual Request Analysis
+	-------------------------
+	if we’re not having any specific live web-application, but we’re having a sample of tokens or Session ids and we want to analyze or depict its randomness?
+
+	Over at the dashboard, navigate to the Sequencer tab and move to the Manal load option, hit the paste button 
+	if the sample is in your clipboard or the load button 
+	then hit the “Analyze now” button 
+	the result dumped over in the new window as “manual load analysis”.
+
+	if the application’s session ID or the token was bounded with base64 encoding scheme?
+	, over at the Sequencer’s dashboard as we switch to the analysis option tab we just need to enable the “base-64 decode before analyzing” option 
+
+	Comparing the Captured Tokens
+	-----------------------------
+	Burp Comparer is a tool to perform a comparison between two requests or responses against one another,
+	capture & send 2 requests , send to comparer tab
+	As soon as we select the comparison option, we got a new window popped up displaying both the requests in-front and highlighting the Modified, Deleted & the Added keywords
+
+=============================================================================================================================================
+10.	Burp Suite for Pentester: Turbo Intruder
+======================================================
+	What is Turbo Intruder
+	to send a large number of HTTP requests and analyzing the results.
+	
+	•	High speed with least latency during fuzzing
+	•	Low memory usage with a million payloads
+	•	Customizable python scripts for different attack scenarios
+	•	Reliable for Multi-day attacks
+
+	Burp Intruder v/s Turbo Intruder
+	All the major brute forcers, create a TCP handshake for a single request and send the request to the server
+	turbo intruder is different and as its speed is
+
+	Turbo Intruder’s Installation
+	-----------------------------
+	Extender tab and then further select the bApp Store 
+	Turbo Intruder->hit the install button 
+
+	Brute Forcing the application’s Passwords
+	-----------------------------------------
+	Via Burp’s Intruder
+	Via Turbo Intruder
+		The drop-down list contains a number of attacking python scripts, that we could use accordingly whenever we need.
+		1.	The script within the first highlighted box is responsible for the fuzzing speed and the number of connections made by the turbo intruder. However, it even carries up the requests made per connection.
+		2.	Over in the second box we need to add the dictionary manually by specifying its location.
+		3.	The third code snippet is the most highlighted section as it defines which request should be displayed in the output table. Here the code “if req.status != 404:” defines that all the requests will get added to the table leaving the once that are having status code = 404
+
+		concurrentConnections
+		Request per Connection 
+
+	Customizing the Python Scripts
+	--------------------------------
+
+	Fuzz for Multiple Parameters-> select examples/multipleParameters.py
+====================================================================================================================================================
+11.	Engagement Tools Tutorial in Burp suite
+==================================================
+	Engagement tools which is a Pro-only feature of Burp Suite. It is mainly used in information gathering and hence the analysis of any web application testing.
+	•	Find References
+	•	Discover Content
+	•	Schedule Task
+	•	Generate CSRF POC
+
+
+	•	Find References-: 
+			This function can be used to search all Burp suite tools for HTTP responses that link to a particular item
+			To make use of this function, select an HTTP request anywhere in Burp suite, or any part of the site map, and choose “Find references” in “Engagement tools” in the context menu which can be seen clicking Action Tab within Burp suite.
+
+			click on Action Tab, after that select the Engagement tools then click on Find References. This will open a result window which will show all the references related to the URL 
+
+	•	Discover Content
+			This function is used to discover contents and functionality which are not linked with visible content that you can browse or spider.
+		
+	Control
+		This tab shows you the current status of the session. The toggle button represents whether the session is running or not, and it also allows you to pause and restart the session.
+		The following information is displayed about the progress of the discovery session:
+	•	Number of requests made
+	•	Number of bytes transferred in server responses
+	•	Number of network errors
+	•	Number of discovery tasks queued
+	•	Number of spider requests queued
+	•	Number of responses queued for analysis
+
+	Target
+	This option allows you to define or state the start directory of the content discovery session, and whether the files or directories should be targeted.
+
+	•	Start directory – This is the location where Burp suite is used to look for content. The items within this path and sub-directories are requested during the session.
+	•	Discover – This option can be used to determine whether the session will look for files or directories or both.
+
+
+	Site Map
+	The discovery session uses their own site map, showing all of the content which has been discovered within the defined scope.
+
+	click on Action Tab within the Burp suite, after that select the Engagement tools then click on Content Discovery. This will open a result window which will show the discovery session status and queued tasks which are related to the URL 
+
+	Schedule Task
+	------------------
+	Then click on Action Tab within the Burp suite, after that select the Engagement tools then click on Schedule Task. This will open a window of schedule task options where we have selected Scan from a URL option 
+	1)Scan from a URL
+	2)Pause Active scanning
+	3)Resume Active scanning
+	4) Spider from a URL
+	5) Pause spidering
+	6) Resume spidering
+	7) Save state
+
+	Next a window will open where we have to give the URL we want to scan 
+	Then Click Next we see that the scanner tab 
+
+	Generate CSRF PoC
+	------------------
+	This function can be used to generate a proof-of-concept (PoC) cross-site request forgery (CSRF) 
+	select a URL or HTTP request anywhere in the Burp suite, and choose “Generate CSRF PoC” within “Engagement tools” 
+	
+	First, we have intercepted the request of the CSRF (transfer amount) option in the Bwapp LAB, where we have given an Account Number.
+	Then click on transfer, the burp suite will capture the request of the page in the intercept tab
+	Then click on Action Tab within the Burp suite, after that select the Engagement tools 
+	then click on Generate CSRF PoC. 
+	This will open a window of the CSRF PoC where we made a change in Account value and Amount value
+	After making changes in the values click on Test in Browser option or Copy HTML this will open the window of Show response in the browser 
+	 then click on COPY, and then paste it in the Browser and Press Enter 
+
+====================================================================================================================================================
+15.	Beginners Guide to Burpsuite Payloads (Part1)
+=======================================================
+	Payload Processing
+	Payload Processing can be defined as when payloads are generated using payload types, they can be further manipulated or filtered using various processing rules and payload encoding
+
+	Payload Processing Rules
+	These rules are defined to perform a various processing task on each payload before it is used
+	Payload processing rules are useful in situations where you need to generate different payloads, or where we want to wrap payloads within a wider structure or encoding scheme
+
+	• Add prefix-> This processing rule adds up a prefix before the payload
+	• Add suffix-> This processing rule adds up a suffix after the payload.
+	• Match / Replace-> This processing rule is used to replace any part of the payload that match a specific regular expression, with a string.
+	• Substring-> This processing rule is used to extracts a sub-portion of the payload, starting from a specified offset up to a specified length
+	• Reverse substring->the end offset is specified counting backward from the end of the payload, and the length is counted backward from the end offset.
+	• Modify case-> This processing rule can be used to modify the case of the payload if needed
+
+======================================================================================================================================================
+14.	Beginners Guide to Burpsuite Payloads (Part2)
+=========================================================
+	• Encode ->  The processing rule can be used to encode the payload using various schemes such as URL, HTML, Base64, ASCII hex or constructed strings.
+	• Decode -> This processing rule can be used to decode the payload using various schemes: URL, HTML, Base64 or ASCII hex
+	• Hash-> This processing rule can be used to carry out a hashing operation on the payload
+		There are 7 types of hashing algorithms are available in this payload processing rule 
+		•	SHA-384
+		•	SHA-224
+		•	SHA-256
+		•	MD5
+		•	MD2
+		•	SHA
+		•	SHA-512
+
+	• Add raw payload -> This processing rule can be used to add raw payload value before or after the current processed value. 
+	• Skip if matches regex-> This processing rule can be used to check the current processed value matches a specified regular expression, and if it matches it will skip the payload and will move onto the next one. 
+				Suppose we have a parameter value that has a minimum length and want to skip values 
+	• Invoke Burp extension->
+=====================================================================================================================================================
+13.	Payload Processing Rule in Burp suite (Part1)
+=======================================================	 
+	Types of Payload in Burp Suite
+	•	Simple list->	it allows you to configure a short Dictionary of strings which are used as payload.
+
+	•	Runtime File->	This type of payload allows you to configure a file which reads the payload strings at runtime. 
+				needed when we require a large list of payloads, to avoid holding the entire list in memory
+
+	•	Case Modification-> This type of payload allows you to configure a list of strings and apply various case modifications to each item on the list
+				    useful in password guessing attacks, for generating case variations on dictionary words.
+				    •	No change – The item is used without being modified.
+				    •	To lower case – All letters in the item are converted to lower case.
+			 	    •	To upper case – All letters in the item are converted to upper case.
+				    •	To Proper name – The first letter in the item is converted to upper case, and the remaining letters are converted to lower case.
+				    •	To Proper Name – The first letter in the item is converted to upper case, and the remaining letters are not changed.
+
+	•	Numbers- 	This type of payload generates numeric payloads within a given range and in a specified format
+				•	Number range:
+				•	Type – the type options describes that the numbers should be generated sequentially or randomly.
+				•	From – If numbers are being generated sequentially, this is the value of the first number that will be generated.
+				•	To – If numbers are being generated sequentially, this value of the last number that will be generated. It is said as the highest possible number that may be randomly generated.
+				•	Step – the step option is used when numbers are being generated sequentially and specifies the increment in the successive numbers.
+				•	How many – This option is available when numbers are being generated randomly, and specifies the number of payloads that will be generated
+
+	•	Character substitution	
+				This type of payload generates a payload of specified lengths that contain all permutations of list of characters in the given string
+				•	Character set – The set of characters to be used in the payloads. Note that the total number of payloads increases exponentially with the size of this set.
+				•	Min length – The length of the shortest payload.
+				•	Max length – The length of the longest payload.
+
+============================================================================================================================================================
+12.	Payload Processing Rule in Burp suite (Part2)
+======================================================
+	•	Custom iterator 
+				This type of payload allows to configure a list of strings and apply various character substitutions to each item. 
+				This type of payload is useful in password guessing attacks and generating common variations on dictionary words.
+	•	Recursive grep
+				This is a type of payload which can copy the value of the current payload to another payload position. 
+				It is very useful for attack types that have multiple payload sets such as cluster bomb, pitchfork, and battering ram.
+				
+	•	Illegal Unicode
+				This type of payload allows you to set up a list of names or email addresses and can produce usernames from given specific schemes
+	•	Character blocks
+
+	•	Dates
+				This type of payload generates date payloads within a given range and in a specified format
+				This type of payload is can be used in data mining or brute forcing.
+
+				•	From – This is said as the first date which will be generated.
+				•	To – This is said as the last date which will be generated.
+				•	Step – This is said as an increase between sequential dates, days, weeks, months or years. It should be a positive value.
+				•	Format – This is said as the format in which dates can be represented. we can select from different predefined date formats, or we can make our own custom date format as per our requirement. 
+
+	•	Brute Forcer		Done before
+	•	Null Payloads
+	•	Character frober	Done before
+	•	Bit Flipper
+	•	Username generator-	Done before
+	•	ECB block shuffler
+	•	Extension Generated
+	•	Copy other payload	Done before
+
+=======================================================================================================================================================
+16.	Burpsuite Encoder & Decoder Tutorial
+================================================
+	Burpsuite Decoder can be said as a tool which is used for transforming encoded data into its real form
+
+	There are 9 types of decoder format in Burp Suite:
+	•	Plain text
+	•	URL
+	•	HTML
+	•	Base64
+	•	ASCII Hex
+	•	Hex
+	•	Octal
+	•	Binary
+	•	Gzip
+
+====================================================================================================================================================
+17.	Burp Suite for Pentester: Active Scan++
+=================================================
+	burp plugins “Active Scan++” 
+	
+	Exploring & Initializing Active Scan++
+	Active Scan++ burp’s extension, Active Scan++ integrates with the burp’s scanner such in order to assist it to identify additional vulnerabilities
+	It requires Jython
+	Back at the extender tab, navigate to the Options section there and scroll down for the “Python Environment”, hit the select file button, and then opt for the downloaded file
+
+	Enhancing the Audit Functionalities
+	-----------------------------------
+	opt the root branch, and then we’ll hit a right-click to opt “Actively scan this branch” 
+
+	Auditing specific Injection Points
+	----------------------------------
+	What if, you don’t want to test the entire application’s branch neither a specific web-page, but you want an injection point to be audited and if it’s possible then does Active Scan++ 
+	Intercept a HTTP request for login/any page, send to intruder tab, highlight HTTP Header section, right opt “Scan defined insertion points”.
+
+================================================================================================================================================
+18.	Burp Suite for Pentester: Software Vulnerability Scanner
+=================================================================
+	some nice burp extensions that will help us to identify the vulnerable versions of the software or the libraries installed within an application
+
+	Exploring the Burp Plugins
+	----------------------------
+	Software Vulnerability Scanner
+		The Software Vulnerability Scanner is one of the most popular burp extensions that scans the application in order to determine vulnerabilities in the software versions using the vulners.com API.
+		
+		how this plugin detects the vulnerable software versions?
+		1.	It identifies the vulnerable software with the fingerprints or the CPE (Common Platform Enumeration).
+		2.	It checks the vulnerable paths with the database and identifies whether any exploit can be used against that path or not.
+
+	Configuring the Extension
+		navigating to the BApp Store at the Extender tab and there we’ll try to find Software Vulnerability Scanner.
+		After installing this plugin, tab positioned into the top panel as “Software Vulnerability Scanner”, 
+		enhance its scanning capabilities by customizing it over into the options tab.
+
+		options
+		1)use scan by locations path
+		2) Scope only
+
+	Fingerprinting the installed software
+	-------------------------------------
+	turn our browser’s proxy and will surf testphp.vulnweb.com. As soon as the web-page boots up, we’ll roam around in order to generate some traffic.
+	switch to the dashboard we can see that the burp scanner was on  Live Audit
+	whatever we did or surfed, it got captured and was shared with the burp scanner.
+	explore it and check what it is having for us
+	move back to the Software Vulnerability Scanner tab at our burpsuite and will switch to the Results section, which contains the vulnerable software versions aligned with their names and hosts and the Possible vulnerable software uses specific paths.
+
+	
+	Retire.js-> burp plugin i.e. Retire.js
+	----------
+	Used to identify that the application we’re testing is having the outdated version of the JavaScript packages or not.
+
+	Setting up the Plugin- same as Active scan++ installation
+	
+	Dumping the Outdated JavaScript Libraries-> 
+			Once the plugin got configured, we just need to initiate the scanner and within a few minutes, we’ll get the output. 
+			surf the website with the browser proxy ON to generate traffic.
+			back to the burp suite dashboard and will check the Tasks tab there
+			we got about 32 Requests in the Live Proxy Audit.check them out in the Issue Activity tab
+			At last, let’s check the Response tab to analyze how the plugin detected the vulnerable jquery version
+
+=====================================================================================================================================================
+19.	Burp Suite for Pentester: Burp’s Project Management
+===============================================================
+	burp suite professional version, that will help the pentester to save an incomplete test or resume it by loading the project file 
+	
+	Initiating with the Project Files
+	
+	Temporary project->
+		to enhance the working speed, burp temporary project stores all its generated data into the system’s memory, and nothing is saved by default
+
+	Project on Disk
+		burp users faced about their system memory usage and saving the project parts.
+		Thereby in order to sort things out create project files on their disks, 
+		the data will be shared with a project file and the contents within it will be saved incrementally on a real-time basis as we work.
+
+	Open Existing Project
+		Time to load the configuration, as we’ve opened our existing project thereby the default would be “Use options saved with the project
+	
+	Manipulating Project Files
+	--------------------------
+	1. the burp suite even gives us the opportunity to Save a copy of our running project
+	2. merge the work from other projects by importing them from the disk
+
+	The Save copy option is for both the project types – Project on disks and temporary projects
+
+	But the Import project file feature is only for Project on disk scenarios.
+
+	There are times when we want to merge some other project contents into our current working project, thereby we can do this by simply selecting the “Import project” open directly from the dropdown list
+
+	Playing with Project Options
+	If we’re working on an on-disk project, all the options that we change or customize got automatically 
+	
+	Exporting the customized options
+	-------------------------------
+	> Restore defaults
+	> Load project options
+	> Save project options	
+==========================================================================================================================================================
+API Scanning with Burp Suite
+===============================
+
+	API's allow different applications to talk to each other
+	APIs are also used to provide microservices internally within an organization,
+	
+	The OpenAPI standard
+	---------------------
+	recent development is the OpenAPI standard for defining the API endpoints
+	This standard defines a YAML or JSON structure that is used to specify the endpoints in a standardized way, including the servers that host the API
+	for each endpoint a specification of the required and optional parameters, the return type and so on
+	
+	Rewriting Burp Scanner to work with OpenAPI
+	-------------------------------------------
+	if we find an OpenAPI document we can automatically find the endpoints that are exposed and the crawler can add these endpoints to the list of items passed over to the scanner.
+
+	Crawling OpenAPI documents
+	Deciding what parameters to send in the crawl
+	Given a particular endpoint it is quite possible to have a huge number of possible parameters that could be submitted
+	
+	We have decided on the following combinations:
+	•	Every combination of server (as long as it is in scope) and path methods (GET, POST, etc.). So if we have three servers and an endpoint with a GET and POST method, this would be 3 x 2 = 6 total endpoint locations.
+	•	If optional parameters are defined, the crawler will send at least two requests to that endpoint: one request containing only the mandatory parameters and another request that includes all of the optional parameters as well.
+	•	In the case of enumerated types, the crawler will send a separate request for each of the parameter's permitted values.
+	•	In the case of numeric values we use the maximum and minimum values as specified.
+	•	If example sets of parameters are provided we use the final provided example
+	
+	If the parameters are not defined in one of the ways listed above we revert back to using Guess and Canary Keys as we do for HTML forms.
+
+	
+
+
+
+
+===========================================================  END OF TUTORIAL =========================================================================================			
+
+
+
+	
+	
+
+	
+	
+
+	
+	
+	
+	
+
+	
+
+
+
+
+
+
+
+
+
+	
+
+	
+	
+
+	
+	
+
+	
+	
+			
+
+	
+
+
+
+	
